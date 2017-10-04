@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ExpenseDashboardPage from './ExpenseDashboardPage';
 
 const NotFoundPage = () => (
   <div>
