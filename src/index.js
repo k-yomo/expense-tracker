@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter'
 import configureStore from './store/configureStore';
 import { addExpense, editExpense, removeExpense } from './actions/expenses'
@@ -25,8 +26,14 @@ store.dispatch(addExpense({
 
 store.dispatch(setTextFilter("water"));
 
-const currentState = store.getState();
-console.log(getVisibleExpenses(currentState.expenses, currentState.filters));
+const state = store.getState();
+console.log(getVisibleExpenses(state.expenses, state.filters));
 
-ReactDOM.render(<AppRouter />, document.getElementById('root'));
+const jsx = (
+  <Provider store={store}>
+    <AppRouter />
+  </Provider>
+)
+
+ReactDOM.render(jsx, document.getElementById('root'));
 registerServiceWorker();
